@@ -1,0 +1,280 @@
+:root {
+    --primary-color: rgba(110, 70, 219, 0.8);
+    --secondary-color: rgba(29, 38, 113, 0.8);
+    --text-color: rgba(255, 255, 255, 0.9);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --background-before: #0d0d12; /* Dark background before scroll */
+    --background-after: rgba(29, 38, 113, 0.95); /* Blue background after scroll */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    background-color: var(--background-before);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: var(--transition);
+    padding: 1.5rem 2rem;
+    backdrop-filter: blur(5px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Hero Section with Curvy Road */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-color: var(--background-before);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+    opacity: 0.5;
+}
+
+/* Curvy Road Element */
+.curvy-road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.road {
+    position: absolute;
+    bottom: -5%;
+    left: -10%;
+    width: 120%;
+    height: 60%;
+    background-color: transparent;
+}
+
+.road path {
+    fill: none;
+    stroke: rgba(110, 70, 219, 0.3);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 20, 20;
+    animation: moveRoad 15s linear infinite;
+}
+
+@keyframes moveRoad {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -1000;
+    }
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 2rem;
+    z-index: 1;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-secondary);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+    transition: var(--transition);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Intro Section */
+.intro {
+    padding: 8rem 0;
+    background-color: var(--background-after);
+    position: relative;
+}
+
+.intro h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2rem;
+    max-width: 800px;
+}
+
+.intro p {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    max-width: 800px;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+}
+
+.gradient-bar {
+    width: 100px;
+    height: 6px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    margin-top: 3rem;
+}
+
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-info a {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--text-secondary);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+    
+    .nav-links a {
+        margin-left: 1rem;
+    }
+    
+    .intro {
+        padding: 6rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+    
+    .nav-links a {
+        margin-left: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
